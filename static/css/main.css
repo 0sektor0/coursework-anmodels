@@ -1,0 +1,36 @@
+html,
+body{
+ height: 100%;
+}
+
+#cover {
+  background: rgb(50, 60, 50) url('') center center no-repeat;
+  background-size: cover;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+#cover-caption {
+  width: 100%;
+}
+
+.h-text {
+  color: rgb(255, 255, 255);
+  margin-top: 50px;
+}
+
+.process-button {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+#resultDiv {
+  background: rgb(235, 235, 235);
+}
+
+#resultDiv p {
+  text-align: left;
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+}
