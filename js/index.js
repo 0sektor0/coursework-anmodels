@@ -201,19 +201,19 @@ function printResult(result) {
 
     resultDiv.hidden = false;
 
-    resultDiv.appendChild(createResultField(`λф: ${result.lf}`));
-    resultDiv.appendChild(createResultField(`λ: ${result.l}`));
-    resultDiv.appendChild(createResultField(`Tp: ${result.Tp}`));
+    resultDiv.appendChild(createResultField(`Загрузка рабочей станции: ${result.Pcy}`));
+    resultDiv.appendChild(createResultField(`Загрузка пользователя: ${result.Ppl}`));
+    resultDiv.appendChild(createResultField(`Загрузка канала: ${result.Pk}`));
+    resultDiv.appendChild(createResultField(`Загрузка процессора: ${result.Pcp}`));
+    resultDiv.appendChild(createResultField(`Загрузка дисков: ${result.Pd}`));
+    resultDiv.appendChild(createResultField(`Среднее время реакции Tp: ${result.Tp}`));
+    resultDiv.appendChild(createResultField(`Среднее время цикла системы Tц: ${result.Tc}`));
+    resultDiv.appendChild(createResultField(`Число итераций: ${result.u}`));
+    resultDiv.appendChild(createResultField(`Начальная эффективность фонового потока λ: ${result.l}`));
+    resultDiv.appendChild(createResultField(`Конечная эффективность фонового потока λф: ${result.lf}`));
     resultDiv.appendChild(createResultField(`Tk: ${result.Tk}`));
     resultDiv.appendChild(createResultField(`Tцп: ${result.Tcp}`));
     resultDiv.appendChild(createResultField(`Tдиск: ${result.Td}`));
-    resultDiv.appendChild(createResultField(`Tц${result.Tc}`));
-    resultDiv.appendChild(createResultField(`Число итераций: ${result.u}`));
-    resultDiv.appendChild(createResultField(`Загрузка канала: ${result.Pk}`));
-    resultDiv.appendChild(createResultField(`Загрузка цп: ${result.Pcp}`));
-    resultDiv.appendChild(createResultField(`Загрузка дисков: ${result.Pd}`));
-    resultDiv.appendChild(createResultField(`Загрузка с/я: ${result.Pcy}`));
-    resultDiv.appendChild(createResultField(`Загрузка пользователя: ${result.Ppl}`));
 }
 
 function startCalculations() {
