@@ -121,6 +121,10 @@ function System() {
         calcResultState(this);
     };
 
+    this.resultToFix = (num) => {
+        resultToFix(this, num);
+    };
+
     this.calcSystem = () => {
         this.calcBackgroundFlow();
         this.calcT();
@@ -129,8 +133,7 @@ function System() {
             this.calcT();
             this.result.u++;
 
-            if(this.result.u >= 100000)
-            {
+            if (this.result.u >= 100000) {
                 alert("число итерация больше 100000 возможно ввели неверные данные");
                 return;
             }
@@ -145,6 +148,35 @@ function parseInputToFloat(val) {
         val = val.replace(' ', '.').replace(',', '.')
 
     return parseFloat(val)
+}
+
+function resultToFix(system, num) {
+    //фоновый поток
+    system.result.lf = system.result.lf.toFixed(num);
+    //входно поток
+    system.result.l = system.result.l.toFixed(num);
+    //хз
+    system.result.Tp = system.result.Tp.toFixed(num);
+    //t обработки и t в очереди для канала
+    system.result.Tk = system.result.Tk.toFixed(num);
+    //t обработки и t в очереди для процессора
+    system.result.Tcp = system.result.Tcp.toFixed(num);
+    //t обработки и t в очереди для дисков
+    system.result.Td = system.result.Td.toFixed(num);
+    //t обработки и t в очереди для цикла
+    system.result.Tc = system.result.Tc.toFixed(num);
+    //число итераций
+    system.result.u = system.result.u.toFixed(num);
+    //загрузка канала
+    system.result.Pk = system.result.Pk.toFixed(num);
+    //загрузка цп
+    system.result.Pcp = system.result.Pcp.toFixed(num);
+    //загрузка диска
+    system.result.Pd = system.result.Pd.toFixed(num);
+    //загрузка с/я
+    system.result.Pcy = system.result.Pcy.toFixed(num);
+    //загрузка п/ля
+    system.result.Ppl = system.result.Ppl.toFixed(num);
 }
 
 function calcSystemResult(k1, k2, delta, n, tk, tcp, td, c, m, gamma, Tdob, Tf) {
@@ -166,6 +198,7 @@ function calcSystemResult(k1, k2, delta, n, tk, tcp, td, c, m, gamma, Tdob, Tf) 
     system.model.n = parseInt(n);
 
     system.calcSystem();
+    system.resultToFix(4);
     return system.result;
 }
 
@@ -206,11 +239,11 @@ function printResult(result) {
     resultDiv.appendChild(createResultField(`Загрузка канала: ${result.Pk}`));
     resultDiv.appendChild(createResultField(`Загрузка процессора: ${result.Pcp}`));
     resultDiv.appendChild(createResultField(`Загрузка дисков: ${result.Pd}`));
-    resultDiv.appendChild(createResultField(`Среднее время реакции Tp: ${result.Tp}`));
     resultDiv.appendChild(createResultField(`Среднее время цикла системы Tц: ${result.Tc}`));
-    resultDiv.appendChild(createResultField(`Число итераций: ${result.u}`));
+    resultDiv.appendChild(createResultField(`Среднее время реакции Tp: ${result.Tp}`));
     resultDiv.appendChild(createResultField(`Начальная эффективность фонового потока λ: ${result.l}`));
     resultDiv.appendChild(createResultField(`Конечная эффективность фонового потока λф: ${result.lf}`));
+    resultDiv.appendChild(createResultField(`Число итераций: ${result.u}`));
     resultDiv.appendChild(createResultField(`Tk: ${result.Tk}`));
     resultDiv.appendChild(createResultField(`Tцп: ${result.Tcp}`));
     resultDiv.appendChild(createResultField(`Tдиск: ${result.Td}`));
