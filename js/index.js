@@ -197,8 +197,10 @@ function calcSystemResult(k1, k2, delta, n, tk, tcp, td, c, m, gamma, Tdob, Tf) 
     system.model.c = parseInt(c);
     system.model.n = parseInt(n);
 
+    let count = document.getElementById("inputCount").value;
+
     system.calcSystem();
-    system.resultToFix(4);
+    system.resultToFix(count);
     return system.result;
 }
 
@@ -239,14 +241,14 @@ function printResult(result) {
     resultDiv.appendChild(createResultField(`Загрузка канала: ${result.Pk}`));
     resultDiv.appendChild(createResultField(`Загрузка процессора: ${result.Pcp}`));
     resultDiv.appendChild(createResultField(`Загрузка дисков: ${result.Pd}`));
-    resultDiv.appendChild(createResultField(`Среднее время цикла системы Tц: ${result.Tc}`));
-    resultDiv.appendChild(createResultField(`Среднее время реакции Tp: ${result.Tp}`));
+    resultDiv.appendChild(createResultField(`Среднее время цикла системы Tц: ${result.Tc} с`));
+    resultDiv.appendChild(createResultField(`Среднее время реакции Tp: ${result.Tp} с`));
     resultDiv.appendChild(createResultField(`Начальная эффективность фонового потока λ: ${result.l}`));
     resultDiv.appendChild(createResultField(`Конечная эффективность фонового потока λф: ${result.lf}`));
     resultDiv.appendChild(createResultField(`Число итераций: ${result.u}`));
-    resultDiv.appendChild(createResultField(`Tk: ${result.Tk}`));
-    resultDiv.appendChild(createResultField(`Tцп: ${result.Tcp}`));
-    resultDiv.appendChild(createResultField(`Tдиск: ${result.Td}`));
+    resultDiv.appendChild(createResultField(`Tk: ${result.Tk} с`));
+    resultDiv.appendChild(createResultField(`Tцп: ${result.Tcp} с`));
+    resultDiv.appendChild(createResultField(`Tдиск: ${result.Td} с`));
 }
 
 function startCalculations() {
@@ -264,7 +266,8 @@ function startCalculations() {
         input.m,
         input.gamma,
         input.Tdob,
-        input.Tf
+        input.Tf,
+        input.count,
     );
 
     printResult(result);
